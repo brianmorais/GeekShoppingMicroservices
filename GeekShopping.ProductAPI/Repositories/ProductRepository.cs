@@ -17,7 +17,7 @@ namespace GeekShopping.ProductAPI.Repositories
             _context = context;
         }
 
-        public async Task<ProductDTO?> Create(ProductDTO productDto)
+        public async Task<ProductDTO> Create(ProductDTO productDto)
         {
             var product = _mapper.Map<ProductDTO, Product>(productDto);
             _context.Products?.Add(product);
@@ -44,19 +44,19 @@ namespace GeekShopping.ProductAPI.Repositories
             }
         }
 
-        public async Task<IEnumerable<ProductDTO>?> FindAll()
+        public async Task<IEnumerable<ProductDTO>> FindAll()
         {
             var products = await _context.Products?.ToListAsync()!;
             return _mapper.Map<List<ProductDTO>>(products);
         }
 
-        public async Task<ProductDTO?> FindById(long id)
+        public async Task<ProductDTO> FindById(long id)
         {
             var product = await _context.Products?.FirstOrDefaultAsync(x => x.Id == id)!;
             return _mapper.Map<ProductDTO>(product);
         }
 
-        public async Task<ProductDTO?> Update(ProductDTO productDto)
+        public async Task<ProductDTO> Update(ProductDTO productDto)
         {
             var product = _mapper.Map<ProductDTO, Product>(productDto);
             _context.Products?.Update(product);

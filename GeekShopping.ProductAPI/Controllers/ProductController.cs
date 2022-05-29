@@ -36,4 +36,35 @@ public class ProductController : ControllerBase
 
         return Ok(product);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<ProductDTO>> Create(ProductDTO productDto)
+    {
+        if (productDto == null)
+            return BadRequest();
+
+        var product = await _repository.Create(productDto);
+        return Ok(product);
+    }
+
+    [HttpPut]
+    public async Task<ActionResult<ProductDTO>> Update(ProductDTO productDto)
+    {
+        if (productDto == null)
+            return BadRequest();
+
+        var product = await _repository.Update(productDto);
+        return Ok(product);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<ProductDTO>> Delete(long id)
+    {
+        var status = await _repository.Delete(id);
+
+        if (status)
+            return Ok(status);
+
+        return BadRequest();
+    }
 }
