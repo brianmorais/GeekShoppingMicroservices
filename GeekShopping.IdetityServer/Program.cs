@@ -1,4 +1,5 @@
 using GeekShopping.IdetityServer.Configuration;
+using GeekShopping.IdetityServer.Initializer;
 using GeekShopping.IdetityServer.Models;
 using GeekShopping.ProductAPI.Models.Context;
 using Microsoft.AspNetCore.Identity;
@@ -30,6 +31,8 @@ var identityServerBuilder = builder.Services.AddIdentityServer(options =>
     .AddInMemoryClients(IdentityConfiguration.Clients)
     .AddAspNetIdentity<ApplicationUser>();
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 identityServerBuilder.AddDeveloperSigningCredential();
 
 var app = builder.Build();
@@ -50,6 +53,13 @@ app.UseRouting();
 app.UseIdentityServer();
 
 app.UseAuthorization();
+
+var serviceScopeFactory = app.Services.GetService<IServiceScopeFactory>();
+using (var scope = serviceScopeFactory.CreateScope())
+{
+    var initializer = (IDbInitializer)scope.ServiceProvider.GetService(typeof(IDbInitializer));
+    initializer.Initialize();
+}
 
 app.MapRazorPages();
 
