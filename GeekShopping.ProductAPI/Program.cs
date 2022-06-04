@@ -22,11 +22,12 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
     {
-        options.Authority = "https://localhost:4435/";
+        options.Authority = "http://localhost:4436/";
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false
         };
+        options.RequireHttpsMetadata = false;
     });
 
 builder.Services.AddAuthorization(options =>
