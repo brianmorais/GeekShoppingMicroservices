@@ -20,7 +20,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer(options =>
+    .AddJwtBearer("Bearer", options =>
     {
         options.Authority = "http://localhost:4436/";
         options.TokenValidationParameters = new TokenValidationParameters
