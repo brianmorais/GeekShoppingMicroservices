@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Ciba;
+namespace GeekShopping.IdentityServer.Pages.Ciba;
 
 [SecurityHeaders]
 [Authorize]

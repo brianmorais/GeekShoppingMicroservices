@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Logout;
+namespace GeekShopping.IdentityServer.Pages.Logout;
 
 [SecurityHeaders]
 [AllowAnonymous]

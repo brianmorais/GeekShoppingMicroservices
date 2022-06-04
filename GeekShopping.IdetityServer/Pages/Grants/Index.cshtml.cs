@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Grants;
+namespace GeekShopping.IdentityServer.Pages.Grants;
 
 [SecurityHeaders]
 [Authorize]

@@ -1,5 +1,5 @@
 
-namespace teste.Pages.Logout;
+namespace GeekShopping.IdentityServer.Pages.Logout;
 
 public class LogoutOptions
 {

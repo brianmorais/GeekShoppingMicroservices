@@ -3,7 +3,7 @@
 // See LICENSE in the project root for license information.
 
 
-namespace teste.Pages.Logout;
+namespace GeekShopping.IdentityServer.Pages.Logout;
 
 public class LoggedOutViewModel
 {

@@ -2,7 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
-namespace teste.Pages.Device;
+namespace GeekShopping.IdentityServer.Pages.Device;
 
 public class DeviceOptions
 {

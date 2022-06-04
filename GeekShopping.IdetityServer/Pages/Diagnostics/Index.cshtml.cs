@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 
-namespace teste.Pages.Diagnostics;
+namespace GeekShopping.IdentityServer.Pages.Diagnostics;
 
 [SecurityHeaders]
 [Authorize]

@@ -5,7 +5,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages;
+namespace GeekShopping.IdentityServer.Pages;
 
 public class SecurityHeadersAttribute : ActionFilterAttribute
 {

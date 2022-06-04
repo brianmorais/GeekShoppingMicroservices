@@ -2,7 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
-namespace teste.Pages.Consent;
+namespace GeekShopping.IdentityServer.Pages.Consent;
 
 public class ConsentOptions
 {

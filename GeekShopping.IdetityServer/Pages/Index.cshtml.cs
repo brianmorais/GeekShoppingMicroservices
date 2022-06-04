@@ -2,7 +2,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Home;
+namespace GeekShopping.IdentityServer.Pages.Home;
 
 [AllowAnonymous]
 public class Index : PageModel

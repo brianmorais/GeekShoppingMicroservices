@@ -2,7 +2,7 @@ using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Logout;
+namespace GeekShopping.IdentityServer.Pages.Logout;
 
 [SecurityHeaders]
 [AllowAnonymous]

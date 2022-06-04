@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace teste.Pages.Account;
+namespace GeekShopping.IdentityServer.Pages.Account;
 
 public class AccessDeniedModel : PageModel
 {

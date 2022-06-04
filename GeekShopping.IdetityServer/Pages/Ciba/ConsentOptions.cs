@@ -2,7 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
-namespace teste.Pages.Ciba;
+namespace GeekShopping.IdentityServer.Pages.Ciba;
 
 public class ConsentOptions
 {
