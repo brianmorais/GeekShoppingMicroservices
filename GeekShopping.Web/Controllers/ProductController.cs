@@ -3,6 +3,7 @@ using GeekShopping.Web.Services.Interfaces;
 using GeekShopping.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using GeekShopping.Web.Utils;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GeekShopping.Web.Controllers;
 
@@ -18,7 +19,8 @@ public class ProductController : Controller
     [Authorize]
     public async Task<IActionResult> Index()
     {
-        var products = await _service.FindAll();
+        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var products = await _service.FindAll(token);
         return View(products);
     }
 
@@ -33,7 +35,8 @@ public class ProductController : Controller
     {
         if (ModelState.IsValid)
         {
-            var response = await _service.Create(product);
+            var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+            var response = await _service.Create(token, product);
             if (response != null)
                 return RedirectToAction(nameof(Index));
         }
@@ -43,7 +46,8 @@ public class ProductController : Controller
 
     public async Task<IActionResult> ProductUpdate(long id)
     {
-        var product = await _service.FindById(id);
+        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var product = await _service.FindById(token, id);
         if (product != null)
             return View(product);
 
@@ -56,7 +60,8 @@ public class ProductController : Controller
     {
         if (ModelState.IsValid)
         {
-            var response = await _service.Update(product);
+            var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+            var response = await _service.Update(token, product);
             if (response != null)
                 return RedirectToAction(nameof(Index));
         }
@@ -67,7 +72,8 @@ public class ProductController : Controller
     [Authorize]
     public async Task<IActionResult> ProductDelete(long id)
     {
-        var product = await _service.FindById(id);
+        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var product = await _service.FindById(token, id);
         if (product != null)
             return View(product);
 
@@ -78,7 +84,8 @@ public class ProductController : Controller
     [Authorize(Roles = Role.Admin)]
     public async Task<IActionResult> ProductDelete(ProductModel product)
     {
-        var response = await _service.Delete(product.Id);
+        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var response = await _service.Delete(token, product.Id);
         if (response)
             return RedirectToAction(nameof(Index));
         
