@@ -404,3 +404,7 @@ obj/
 # Common node modules locations
 /node_modules
 /wwwroot/node_modules
+
+# IdentityServer keys
+/GeekShopping.IdetityServer/tempkey.jwk
+/GeekShopping.IdetityServer/keys
