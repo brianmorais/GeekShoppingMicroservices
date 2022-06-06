@@ -19,8 +19,7 @@ public class ProductController : Controller
     [Authorize]
     public async Task<IActionResult> Index()
     {
-        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
-        var products = await _service.FindAll(token);
+        var products = await _service.FindAll();
         return View(products);
     }
 

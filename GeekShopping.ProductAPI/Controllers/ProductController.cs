@@ -18,7 +18,6 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public async Task<ActionResult<IEnumerable<ProductDTO>>> FindAll()
     {
         var product = await _repository.FindAll();
