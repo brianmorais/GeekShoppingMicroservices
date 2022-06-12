@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeekShopping.ProductAPI.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/products")]
 public class ProductController : ControllerBase
 {
     private readonly IProductRepository _repository;

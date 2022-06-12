@@ -1,5 +1,6 @@
 using GeekShopping.CartApi.Config;
 using GeekShopping.CartApi.Models.Context;
+using GeekShopping.CartApi.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -7,6 +8,8 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options =>
