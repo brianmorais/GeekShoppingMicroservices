@@ -51,7 +51,10 @@ namespace GeekShopping.CartApi.Repositories
 
             cart.CartDetails = _context.CartDetails
                 .Where(c => c.CartHeaderId == cart.CartHeader.Id)
-                .Include(c => c.Product);            
+                .Include(c => c.Product);
+
+            if (cart.CartHeader == null || cart.CartDetails == null)
+                return null;
 
             return _mapper.Map<CartDTO>(cart);
         }
@@ -71,7 +74,7 @@ namespace GeekShopping.CartApi.Repositories
                 var total = _context.CartDetails
                     .Where(c => c.CartHeaderId == cartDetails.CartHeaderId)
                     .Count();
-
+                
                 _context.CartDetails.Remove(cartDetails);
 
                 if (total == 1)

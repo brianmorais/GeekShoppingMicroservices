@@ -16,9 +16,9 @@ public class CartController : ControllerBase
     }
 
     [HttpGet("find-cart/{id}")]
-    public async Task<ActionResult<CartDTO>> FindById(string userId)
+    public async Task<ActionResult<CartDTO>> FindById(string id)
     {
-        var response = await _repository.FindCartByUserId(userId);
+        var response = await _repository.FindCartByUserId(id);
 
         if (response == null)
             return NotFound();
