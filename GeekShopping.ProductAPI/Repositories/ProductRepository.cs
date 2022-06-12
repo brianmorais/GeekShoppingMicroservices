@@ -20,7 +20,7 @@ namespace GeekShopping.ProductAPI.Repositories
         public async Task<ProductDTO> Create(ProductDTO productDto)
         {
             var product = _mapper.Map<ProductDTO, Product>(productDto);
-            _context.Products?.Add(product);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<Product, ProductDTO>(product);
         }
@@ -29,7 +29,7 @@ namespace GeekShopping.ProductAPI.Repositories
         {
             try
             {
-                var product = await _context.Products?.FirstOrDefaultAsync(x => x.Id == id)!;
+                var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
                 if (product == null)
                     return false;
 
@@ -46,20 +46,20 @@ namespace GeekShopping.ProductAPI.Repositories
 
         public async Task<IEnumerable<ProductDTO>> FindAll()
         {
-            var products = await _context.Products?.ToListAsync()!;
+            var products = await _context.Products.ToListAsync();
             return _mapper.Map<List<ProductDTO>>(products);
         }
 
         public async Task<ProductDTO> FindById(long id)
         {
-            var product = await _context.Products?.FirstOrDefaultAsync(x => x.Id == id)!;
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
             return _mapper.Map<ProductDTO>(product);
         }
 
         public async Task<ProductDTO> Update(ProductDTO productDto)
         {
             var product = _mapper.Map<ProductDTO, Product>(productDto);
-            _context.Products?.Update(product);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<Product, ProductDTO>(product);
         }

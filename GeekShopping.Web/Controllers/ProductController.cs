@@ -34,7 +34,7 @@ public class ProductController : Controller
     {
         if (ModelState.IsValid)
         {
-            var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+            var token = await HttpContext.GetTokenAsync("access_token");
             var response = await _service.Create(token, product);
             if (response != null)
                 return RedirectToAction(nameof(Index));
@@ -45,7 +45,7 @@ public class ProductController : Controller
 
     public async Task<IActionResult> ProductUpdate(long id)
     {
-        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var token = await HttpContext.GetTokenAsync("access_token");
         var product = await _service.FindById(token, id);
         if (product != null)
             return View(product);
@@ -59,7 +59,7 @@ public class ProductController : Controller
     {
         if (ModelState.IsValid)
         {
-            var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+            var token = await HttpContext.GetTokenAsync("access_token");
             var response = await _service.Update(token, product);
             if (response != null)
                 return RedirectToAction(nameof(Index));
@@ -71,7 +71,7 @@ public class ProductController : Controller
     [Authorize]
     public async Task<IActionResult> ProductDelete(long id)
     {
-        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var token = await HttpContext.GetTokenAsync("access_token");
         var product = await _service.FindById(token, id);
         if (product != null)
             return View(product);
@@ -83,7 +83,7 @@ public class ProductController : Controller
     [Authorize(Roles = Role.Admin)]
     public async Task<IActionResult> ProductDelete(ProductModel product)
     {
-        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var token = await HttpContext.GetTokenAsync("access_token");
         var response = await _service.Delete(token, product.Id);
         if (response)
             return RedirectToAction(nameof(Index));

@@ -27,7 +27,7 @@ public class HomeController : Controller
     [Authorize]
     public async Task<IActionResult> Details(int id)
     {
-        var token = await HttpContext.GetTokenAsync("access_token") ?? "";
+        var token = await HttpContext.GetTokenAsync("access_token");
         var product = await _service.FindById(token, id);
         return View(product);
     }

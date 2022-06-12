@@ -20,7 +20,7 @@ namespace GeekShopping.Web.Utils
                 {
                     PropertyNameCaseInsensitive = true
                 }
-            )!;
+            );
         }
 
         public static Task<HttpResponseMessage> PostAsJson<T>(this HttpClient httpClient, string url, T data)

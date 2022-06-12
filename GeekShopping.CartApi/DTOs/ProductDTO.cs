@@ -1,4 +1,4 @@
-namespace GeekShopping.ProductAPI.DTOs
+namespace GeekShopping.CartApi.DTOs
 {
     public class ProductDTO
     {
