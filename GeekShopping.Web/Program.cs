@@ -8,9 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient<IProductService, ProductService>(options => 
-{
-    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"]);
-});
+    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
+
+builder.Services.AddHttpClient<ICartService, CartService>(options =>
+    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CartAPI"]));
 
 builder.Services.AddAuthentication(options => 
 {
