@@ -26,7 +26,7 @@ public class CartController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("add-cart/{id}")]
+    [HttpPost("add-cart")]
     public async Task<ActionResult<CartDTO>> AddCart([FromBody] CartDTO cart)
     {
         var response = await _repository.SaveOrUpdateCart(cart);
@@ -37,7 +37,7 @@ public class CartController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPut("update-cart/{id}")]
+    [HttpPut("update-cart")]
     public async Task<ActionResult<CartDTO>> UpdateCart([FromBody] CartDTO cart)
     {
         var response = await _repository.SaveOrUpdateCart(cart);
