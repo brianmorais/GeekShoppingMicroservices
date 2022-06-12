@@ -1,23 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.Web", "GeekShopping.Web\GeekShopping.Web.csproj", "{B3DECCAD-C6E8-460A-870C-C284ABE6EFC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.Web", "GeekShopping.Web\GeekShopping.Web.csproj", "{B3DECCAD-C6E8-460A-870C-C284ABE6EFC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.ProductAPI", "GeekShopping.ProductAPI\GeekShopping.ProductAPI.csproj", "{7A2BCFDD-B321-4CE6-9734-EE9B56FCFD38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.ProductAPI", "GeekShopping.ProductAPI\GeekShopping.ProductAPI.csproj", "{7A2BCFDD-B321-4CE6-9734-EE9B56FCFD38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.IdetityServer", "GeekShopping.IdetityServer\GeekShopping.IdetityServer.csproj", "{166E8D2A-4450-4A30-B7B4-92DA5630B6FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.IdetityServer", "GeekShopping.IdetityServer\GeekShopping.IdetityServer.csproj", "{166E8D2A-4450-4A30-B7B4-92DA5630B6FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.CartApi", "GeekShopping.CartApi\GeekShopping.CartApi.csproj", "{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.CartApi", "GeekShopping.CartApi\GeekShopping.CartApi.csproj", "{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.CouponAPI", "GeekShopping.CouponAPI\GeekShopping.CouponAPI.csproj", "{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B3DECCAD-C6E8-460A-870C-C284ABE6EFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,15 @@ Global
 		{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D3945F7-4934-4786-8FC4-57EB6DA27D5B}
 	EndGlobalSection
 EndGlobal
