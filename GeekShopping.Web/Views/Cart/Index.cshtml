@@ -94,19 +94,19 @@
                                 </button>
                             }
                         </div>
-                        @* <div class="col-6 text-end">
+                        <div class="col-6 text-end">
                             <span class="text-danger" style="font-size:21px;">
                                 Purchase Amount: @string.Format("{0:c}", Model.CartHeader.PurchaseAmount)
                                 <br/>
                             </span>
-                            @if(Model.CartHeader.DiscountAmount > 0)
+                            @if(Model.CartHeader.PurchaseAmount > 0)
                             {
                                 <span class="text-success">
-                                    Discount Amount: @Model.CartHeader.DiscountAmount.ToString("c", new CultureInfo("pt-BR"))
+                                    Discount Amount: @Model.CartHeader.PurchaseAmount.ToString("c", new CultureInfo("pt-BR"))
                                     <br/>
                                 </span>
                             }
-                        </div> *@
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer row">
