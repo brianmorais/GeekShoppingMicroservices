@@ -58,4 +58,26 @@ public class CartController : ControllerBase
 
         return Ok(response);
     }
+
+    [HttpPost("apply-coupon")]
+    public async Task<ActionResult<CartDTO>> ApplyCoupon([FromBody] CartDTO cart)
+    {
+        var response = await _repository.ApplyCoupon(cart.CartHeader.UserId, cart.CartHeader.CouponCode);
+
+        if (!response)
+            return NotFound();
+
+        return Ok(response);
+    }
+
+    [HttpDelete("remove-coupon/{userId}")]
+    public async Task<ActionResult<CartDTO>> RemoveCoupon(string userId)
+    {
+        var response = await _repository.RemoveCoupon(userId);
+
+        if (!response)
+            return NotFound();
+
+        return Ok(response);
+    }
 }

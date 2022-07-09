@@ -8,7 +8,7 @@ namespace GeekShopping.Web.Services.Interfaces
         Task<CartViewModel> AddItemToCart(string token, CartViewModel cart);
         Task<CartViewModel> UpdateCart(string token, CartViewModel cart);
         Task<bool> RemoveFromCart(string token, long cartId);
-        Task<bool> ApplyCoupon(string token, string couponCode, CartViewModel cart);
+        Task<bool> ApplyCoupon(string token, CartViewModel cart);
         Task<bool> RemoveCoupon(string token, string userId);
         Task<bool> ClearCart(string token, string userId);
         Task<CartViewModel> Checkout(string token, CartHeaderViewModel cartHeader);
