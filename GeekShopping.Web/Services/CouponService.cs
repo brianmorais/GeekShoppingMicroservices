@@ -9,7 +9,7 @@ namespace GeekShopping.Web.Services
     public class CouponService : ICouponService
     {
         private readonly HttpClient _client;
-        private const string BasePath = "api/v1/coupon";
+        private const string BasePath = "api/v1/coupons";
 
         public CouponService(HttpClient client)
         {
