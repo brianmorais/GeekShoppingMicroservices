@@ -99,10 +99,10 @@
                                 Purchase Amount: @string.Format("{0:c}", Model.CartHeader.PurchaseAmount)
                                 <br/>
                             </span>
-                            @if(Model.CartHeader.PurchaseAmount > 0)
+                            @if(Model.CartHeader.DiscountAmount > 0)
                             {
                                 <span class="text-success">
-                                    Discount Amount: @Model.CartHeader.PurchaseAmount.ToString("c", new CultureInfo("pt-BR"))
+                                    Discount Amount: @Model.CartHeader.DiscountAmount.ToString("c", new CultureInfo("pt-BR"))
                                     <br/>
                                 </span>
                             }
