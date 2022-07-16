@@ -103,5 +103,24 @@ namespace GeekShopping.Web.Controllers
             var userCart = await FindUserCart();
             return View(userCart);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(CartViewModel model)
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+
+            var response = await _cartService.Checkout(token, model.CartHeader);
+
+            if (response != null)
+                return RedirectToAction(nameof(Confirmation));
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
     }
 }
