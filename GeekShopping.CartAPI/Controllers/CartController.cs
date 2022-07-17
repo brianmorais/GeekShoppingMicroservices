@@ -101,7 +101,7 @@ public class CartController : ControllerBase
 
         if (!string.IsNullOrEmpty(dto.CouponCode))
         {
-            var token = Request.Headers["Authorization"];
+            var token = ((string)Request.Headers["Authorization"]).Replace("Bearer", "").Trim();
             var coupon = await _couponService.GetCoupon(token, dto.CouponCode);
 
             if (coupon.DiscountAmount != dto.DiscountAmount)

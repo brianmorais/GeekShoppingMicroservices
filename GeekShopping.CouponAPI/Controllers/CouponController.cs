@@ -20,7 +20,6 @@ namespace GeekShopping.CouponAPI.Controllers
         [Authorize]
         public async Task<ActionResult<CouponDTO>> FindById(string couponCode)
         {
-            var token = Request.Headers["Authorization"];
             var product = await _repository.GetCouponByCouponCode(couponCode);
 
             if (product == null)
