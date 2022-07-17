@@ -2,6 +2,7 @@ using GeekShopping.CartAPI.Config;
 using GeekShopping.CartAPI.Models.Context;
 using GeekShopping.CartAPI.RabbitMQSender;
 using GeekShopping.CartAPI.Repositories;
+using GeekShopping.CartAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -12,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
+
+builder.Services.AddScoped<ICouponService, CouponService>();
+
+builder.Services.AddHttpClient<ICouponService, CouponService>(options =>
+    options.BaseAddress = new Uri(builder.Configuration["ServiceUrls:CouponAPI"]));
 
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options =>

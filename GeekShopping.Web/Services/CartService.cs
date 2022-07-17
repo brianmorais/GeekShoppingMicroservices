@@ -36,12 +36,14 @@ namespace GeekShopping.Web.Services
                 throw new Exception("Somthing went wrong when calling API");
         }
 
-        public async Task<CartHeaderViewModel> Checkout(string token, CartHeaderViewModel cartHeader)
+        public async Task<object> Checkout(string token, CartHeaderViewModel cartHeader)
         {
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await _client.PostAsJson($"{BasePath}/checkout", cartHeader);
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<CartHeaderViewModel>();
+            else if (response.StatusCode == HttpStatusCode.PreconditionFailed)
+                return "Coupon price has changed, please confirm!";
             else
                 throw new Exception("Somthing went wrong when calling API");
         }
