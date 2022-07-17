@@ -25,7 +25,7 @@ namespace GeekShopping.OrderAPI.Models
         public string LastName { get; set; }
 
         [Column("purchase_date")]
-        public DateTime PurchaseDate { get; set; }
+        public DateTime DateTime { get; set; }
 
         [Column("order_time")]
         public DateTime OrderTime { get; set; }
@@ -48,7 +48,7 @@ namespace GeekShopping.OrderAPI.Models
         [Column("total_itens")]
         public int CartTotalItens { get; set; }
 
-        public IEnumerable<OrderDetail> OrderDetails { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
 
         [Column("payment_status")]
         public bool PaymentStatus { get; set; }
