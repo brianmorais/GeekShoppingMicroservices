@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.IdetityServer"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.CartAPI", "GeekShopping.CartAPI\GeekShopping.CartAPI.csproj", "{6D9C921D-FA26-4BBC-A558-8F13E8FBBB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.CouponAPI", "GeekShopping.CouponAPI\GeekShopping.CouponAPI.csproj", "{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.CouponAPI", "GeekShopping.CouponAPI\GeekShopping.CouponAPI.csproj", "{DC96BD38-E2C8-4373-8F4B-5F97BD0471A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.MessageBus", "GeekShopping.MessageBus\GeekShopping.MessageBus.csproj", "{1126EC71-8323-47CA-8681-68E487B39069}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.MessageBus", "GeekShopping.MessageBus\GeekShopping.MessageBus.csproj", "{1126EC71-8323-47CA-8681-68E487B39069}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.OrderAPI", "GeekShopping.OrderAPI\GeekShopping.OrderAPI.csproj", "{6F2D312B-48DE-48C3-ACD8-31525F1C070C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekShopping.OrderAPI", "GeekShopping.OrderAPI\GeekShopping.OrderAPI.csproj", "{6F2D312B-48DE-48C3-ACD8-31525F1C070C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekShopping.PaymentProcessor", "GeekShopping.PaymentProcessor\GeekShopping.PaymentProcessor.csproj", "{0CFDA79F-F164-457D-AEE1-F00A2B637F8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{6F2D312B-48DE-48C3-ACD8-31525F1C070C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F2D312B-48DE-48C3-ACD8-31525F1C070C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F2D312B-48DE-48C3-ACD8-31525F1C070C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFDA79F-F164-457D-AEE1-F00A2B637F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFDA79F-F164-457D-AEE1-F00A2B637F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFDA79F-F164-457D-AEE1-F00A2B637F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFDA79F-F164-457D-AEE1-F00A2B637F8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
