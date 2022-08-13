@@ -21,7 +21,12 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = "Cookies";
     options.DefaultChallengeScheme = "oidc";
 })
-.AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
+.AddCookie("Cookies", options => 
+{
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    options.Cookie.SameSite = SameSiteMode.Unspecified;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+})
 .AddOpenIdConnect("oidc", options => 
 {
     options.Authority = builder.Configuration["ServiceUrls:IdentityServer"];
@@ -36,6 +41,8 @@ builder.Services.AddAuthentication(options =>
     options.Scope.Add("geek_shopping");
     options.SaveTokens = true;
     options.RequireHttpsMetadata = false;
+    options.NonceCookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
 var app = builder.Build();
@@ -52,6 +59,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCookiePolicy();
 
 app.UseAuthentication();
 

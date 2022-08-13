@@ -38,6 +38,13 @@ builder.Services.AddScoped<IProfileService, ProfileService>();
 
 identityServerBuilder.AddDeveloperSigningCredential();
 
+builder.Services.Configure<CookiePolicyOptions>(options => 
+{
+    options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
+    options.Secure = CookieSecurePolicy.Always;
+    options.HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +61,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseIdentityServer();
+
+app.UseCookiePolicy();
 
 app.UseAuthorization();
 
