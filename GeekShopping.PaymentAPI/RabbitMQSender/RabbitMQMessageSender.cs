@@ -12,7 +12,10 @@ namespace GeekShopping.PaymentAPI.RabbitMQSender
         private readonly string _password;
         private readonly string _userName;
         private IConnection _connection;
-        private const string ExchangeName = "FanoutPaymentUpdateExchange";
+        private const string ExchangeNameFanout = "FanoutPaymentUpdateExchange";
+        private const string ExchangeNameDirect = "DirectPaymentUpdateExchange";
+        private const string PaymentEmailUpdateQueueName = "PaymentEmailUpdateQueueName";
+        private const string PaymentOrderUpdateQueueName = "PaymentOrderUpdateQueueName";
 
         public RabbitMQMessageSender()
         {
@@ -40,9 +43,30 @@ namespace GeekShopping.PaymentAPI.RabbitMQSender
             {
                 using (var channel = _connection.CreateModel())
                 {
-                    channel.ExchangeDeclare(ExchangeName, ExchangeType.Fanout, durable: false);
+                    channel.ExchangeDeclare(ExchangeNameFanout, ExchangeType.Fanout, durable: false);
                     var body = GetMessageAsByteArray(message);
-                    channel.BasicPublish(ExchangeName, "", basicProperties: null, body: body);
+                    channel.BasicPublish(ExchangeNameFanout, "", basicProperties: null, body: body);
+                }
+            }
+        }
+
+        public void SendMessageDirect(BaseMessage message)
+        {
+            if (ConnectionExists())
+            {
+                using (var channel = _connection.CreateModel())
+                {
+                    channel.ExchangeDeclare(ExchangeNameDirect, ExchangeType.Direct, durable: false);
+
+                    channel.QueueDeclare(PaymentEmailUpdateQueueName, false, false, false, null);
+                    channel.QueueDeclare(PaymentOrderUpdateQueueName, false, false, false, null);
+                    channel.QueueBind(PaymentEmailUpdateQueueName, ExchangeNameDirect, "PaymentEmail");
+                    channel.QueueBind(PaymentOrderUpdateQueueName, ExchangeNameDirect, "PaymentOrder");
+
+                    var body = GetMessageAsByteArray(message);
+
+                    channel.BasicPublish(ExchangeNameDirect, "PaymentEmail", basicProperties: null, body: body);
+                    channel.BasicPublish(ExchangeNameDirect, "PaymentOrder", basicProperties: null, body: body);
                 }
             }
         }

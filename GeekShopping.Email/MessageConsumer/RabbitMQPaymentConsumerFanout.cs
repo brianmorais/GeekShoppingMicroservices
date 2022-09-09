@@ -1,4 +1,4 @@
-﻿using GeekShopping.Email.Messages;
+using GeekShopping.Email.Messages;
 using GeekShopping.Email.Repositories;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -7,13 +7,15 @@ using System.Text.Json;
 
 namespace GeekShopping.Email.MessageConsumer
 {
-    public class RabbitMQPaymentConsumer : BackgroundService
+    public class RabbitMQPaymentConsumerFanout : BackgroundService
     {
         private readonly EmailRepository _repository;
         private IConnection _connection;
         private IModel _channel;
+        private const string ExchangeName = "FanoutPaymentUpdateExchange";
+        private string queueName = "";
 
-        public RabbitMQPaymentConsumer(EmailRepository repository)
+        public RabbitMQPaymentConsumerFanout(EmailRepository repository)
         {
             _repository = repository;
 
@@ -27,7 +29,9 @@ namespace GeekShopping.Email.MessageConsumer
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
-            _channel.QueueDeclare("orderpaymentresultqueue", false, false, false, null);
+            _channel.ExchangeDeclare(ExchangeName, ExchangeType.Fanout);
+            queueName = _channel.QueueDeclare().QueueName;
+            _channel.QueueBind(queueName, ExchangeName, "");
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -43,7 +47,7 @@ namespace GeekShopping.Email.MessageConsumer
                 _channel.BasicAck(evt.DeliveryTag, false);
             };
 
-            _channel.BasicConsume("orderpaymentresultqueue", false, consumer);
+            _channel.BasicConsume(queueName, false, consumer);
             return Task.CompletedTask;
         }
 

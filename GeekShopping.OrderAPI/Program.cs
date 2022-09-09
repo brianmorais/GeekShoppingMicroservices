@@ -10,8 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
-
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 builder.Services.AddDbContext<MySqlContext>(options =>
     options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
@@ -21,7 +19,7 @@ dbContextBuilder.UseMySql(connection, ServerVersion.AutoDetect(connection));
 
 builder.Services.AddSingleton(new OrderRepository(dbContextBuilder.Options));
 builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
-builder.Services.AddHostedService<RabbitMQPaymentConsumer>();
+builder.Services.AddHostedService<RabbitMQPaymentConsumerDirect>();
 builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
 
 builder.Services.AddAuthentication("Bearer")

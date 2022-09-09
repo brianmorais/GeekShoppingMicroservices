@@ -6,5 +6,6 @@ namespace GeekShopping.PaymentAPI.RabbitMQSender
     {
         void SendMessage(BaseMessage message, string queueName);
         void SendMessageFanout(BaseMessage message);
+        void SendMessageDirect(BaseMessage message);
     }
 }
