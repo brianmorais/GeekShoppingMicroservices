@@ -48,11 +48,6 @@ namespace GeekShopping.Web.Services
                 throw new Exception("Somthing went wrong when calling API");
         }
 
-        public async Task<bool> ClearCart(string token, string userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<CartViewModel> FindCartByUserId(string token, string userId)
         {
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
