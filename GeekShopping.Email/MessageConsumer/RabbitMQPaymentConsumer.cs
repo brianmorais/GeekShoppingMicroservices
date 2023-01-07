@@ -13,15 +13,15 @@ namespace GeekShopping.Email.MessageConsumer
         private IConnection _connection;
         private IModel _channel;
 
-        public RabbitMQPaymentConsumer(EmailRepository repository)
+        public RabbitMQPaymentConsumer(EmailRepository repository, IConfiguration configuration)
         {
             _repository = repository;
-
+            
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
-                UserName = "guest",
-                Password = "guest"
+                HostName = configuration["RabbitMqSettings:HostName"],
+                UserName = configuration["RabbitMqSettings:UserName"],
+                Password = configuration["RabbitMqSettings:Password"]
             };
 
             _connection = factory.CreateConnection();

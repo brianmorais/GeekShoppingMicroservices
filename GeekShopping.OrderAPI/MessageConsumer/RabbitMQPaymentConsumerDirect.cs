@@ -15,15 +15,15 @@ namespace GeekShopping.OrderAPI.MessageConsumer
         private const string ExchangeName = "DirectPaymentUpdateExchange";
         private const string PaymentOrderUpdateQueueName = "PaymentOrderUpdateQueueName";
 
-        public RabbitMQPaymentConsumerDirect(OrderRepository repository)
+        public RabbitMQPaymentConsumerDirect(OrderRepository repository, IConfiguration configuration)
         {
             _repository = repository;
 
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
-                UserName = "guest",
-                Password = "guest"
+                HostName = configuration["RabbitMqSettings:HostName"],
+                UserName = configuration["RabbitMqSettings:UserName"],
+                Password = configuration["RabbitMqSettings:Password"]
             };
 
             _connection = factory.CreateConnection();

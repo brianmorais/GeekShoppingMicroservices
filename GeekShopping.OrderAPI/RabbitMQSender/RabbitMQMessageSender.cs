@@ -13,11 +13,11 @@ namespace GeekShopping.OrderAPI.RabbitMQSender
         private readonly string _userName;
         private IConnection _connection;
 
-        public RabbitMQMessageSender()
+        public RabbitMQMessageSender(IConfiguration configuration)
         {
-            _hostName = "localhost";
-            _password = "guest";
-            _userName = "guest";
+            _hostName = configuration["RabbitMqSettings:HostName"];
+            _password = configuration["RabbitMqSettings:UserName"];
+            _userName = configuration["RabbitMqSettings:Password"];
         }
 
         public void SendMessage(BaseMessage message, string queueName)

@@ -15,15 +15,15 @@ namespace GeekShopping.OrderAPI.MessageConsumer
         private const string ExchangeName = "FanoutPaymentUpdateExchange";
         private string queueName = "";
 
-        public RabbitMQPaymentConsumerFanout(OrderRepository repository)
+        public RabbitMQPaymentConsumerFanout(OrderRepository repository, IConfiguration configuration)
         {
             _repository = repository;
 
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
-                UserName = "guest",
-                Password = "guest"
+                HostName = configuration["RabbitMqSettings:HostName"],
+                UserName = configuration["RabbitMqSettings:UserName"],
+                Password = configuration["RabbitMqSettings:Password"]
             };
 
             _connection = factory.CreateConnection();

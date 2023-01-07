@@ -15,7 +15,7 @@ builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "http://localhost:4436/";
+        options.Authority = builder.Configuration["AuthSettings:IdentityUrl"];
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false
