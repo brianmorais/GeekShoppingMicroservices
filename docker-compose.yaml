@@ -1,0 +1,279 @@
+version: '3'
+
+services:
+
+  product_api_db:
+    image: mysql:latest
+    container_name: product_api_db
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - product_api_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_product_api
+    networks:
+      - geekshopping
+
+  order_api_db:
+    image: mysql:latest
+    container_name: order_api_db
+    restart: always
+    ports:
+      - 3307:3306
+    volumes:
+      - order_api_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_order_api
+    networks:
+      - geekshopping
+
+  identity_server_db:
+    image: mysql:latest
+    container_name: identity_server_db
+    restart: always
+    ports:
+      - 3308:3306
+    volumes:
+      - identity_server_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_identity_server
+    networks:
+      - geekshopping
+
+  email_db:
+    image: mysql:latest
+    container_name: email_db
+    restart: always
+    ports:
+      - 3305:3306
+    volumes:
+      - email_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_email
+    networks:
+      - geekshopping
+
+  coupon_api_db:
+    image: mysql:latest
+    container_name: coupon_api_db
+    restart: always
+    ports:
+      - 3310:3306
+    volumes:
+      - coupon_api_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_coupon_api
+    networks:
+      - geekshopping
+
+  cart_api_db:
+    image: mysql:latest
+    container_name: cart_api_db
+    restart: always
+    ports:
+      - 3311:3306
+    volumes:
+      - cart_api_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=geek_shopping_cart_api
+    networks:
+      - geekshopping
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/mnesia/
+    networks:
+      - geekshopping
+
+  identity_server:
+    image: geekshopping/identity_server
+    container_name: identity_server
+    build:
+      context: .
+      dockerfile: ./GeekShopping.IdetityServer/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=identity_server_db;Port=3308;Database=geek_shopping_identity_server;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4436
+    depends_on:
+      - identity_server_db
+    ports:
+      - 4436:4436
+    networks:
+      - geekshopping
+
+  product_api:
+    image: geekshopping/product_api
+    container_name: product_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.ProductAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=product_api_db;Port=3306;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4441
+      - AuthSettings:IdentityUrl=identity_server
+    depends_on:
+      - product_api_db
+    ports:
+      - 4441:4441
+    networks:
+      - geekshopping
+
+  payment_api:
+    image: geekshopping/payment_api
+    container_name: payment_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.PaymentAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:5136
+      - AuthSettings:IdentityUrl=identity_server
+      - RabbitMqSettings:HostName=rabbitmq
+      - RabbitMqSettings:UserName=guest
+      - RabbitMqSettings:Password=guest
+    ports:
+      - 5136:5136
+    depends_on:
+      - rabbitmq
+    networks:
+      - geekshopping
+
+  order_api:
+    image: geekshopping/order_api
+    container_name: order_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.OrderAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=order_api_db;Port=3307;DataBase=geek_shopping_order_api;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4456
+      - AuthSettings:IdentityUrl=identity_server
+      - RabbitMqSettings:HostName=rabbitmq
+      - RabbitMqSettings:UserName=guest
+      - RabbitMqSettings:Password=guest
+    depends_on:
+      - order_api_db
+      - rabbitmq
+    ports:
+      - 4456:4456
+    networks:
+      - geekshopping
+
+  email_api:
+    image: geekshopping/email_api
+    container_name: email_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.Email/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=email_db;Port=3305;DataBase=geek_shopping_email;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4461
+      - AuthSettings:IdentityUrl=identity_server
+      - RabbitMqSettings:HostName=rabbitmq
+      - RabbitMqSettings:UserName=guest
+      - RabbitMqSettings:Password=guest
+    depends_on:
+      - email_db
+      - rabbitmq
+    ports:
+      - 4461:4461
+    networks:
+      - geekshopping
+
+  coupon_api:
+    image: geekshopping/coupon_api
+    container_name: coupon_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.CouponAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=coupon_api_db;Port=3310;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4451
+      - AuthSettings:IdentityUrl=identity_server
+    depends_on:
+      - coupon_api_db
+    ports:
+      - 4451:4451
+    networks:
+      - geekshopping
+
+  cart_api:
+    image: geekshopping/cart_api
+    container_name: cart_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.CartAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MySQLConnection:MySQLConnectionString=Server=cart_api_db;Port=3311;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
+      - ASPNETCORE_URLS=http://*:4446
+      - AuthSettings:IdentityUrl=identity_server
+      - ServiceUrls:CouponAPI=coupon_api
+    depends_on:
+      - cart_api_db
+    ports:
+      - 4446:4446
+    networks:
+      - geekshopping
+
+  gateway_api:
+    image: geekshopping/gateway_api
+    container_name: gateway_api
+    build:
+      context: .
+      dockerfile: ./GeekShopping.APIGateway/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:4481
+      - AuthSettings:IdentityUrl=identity_server
+    ports:
+      - 4481:4481
+    networks:
+      - geekshopping
+
+  web:
+    image: geekshopping/web
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./GeekShopping.Web/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:4431
+      - ServiceUrls:IdentityServer=identity_server
+      - ServiceUrls:ProductAPI=product_api
+      - ServiceUrls:CartAPI=cart_api
+      - ServiceUrls:CouponAPI=coupon_api
+    ports:
+      - 4431:4431
+    networks:
+      - geekshopping
+
+volumes:
+  product_api_db:
+  order_api_db:
+  identity_server_db:
+  email_db:
+  coupon_api_db:
+  cart_api_db:
+  rabbitmq:
+
+networks:
+  geekshopping:
