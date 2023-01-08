@@ -13,8 +13,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_product_api
-    networks:
-      - geekshopping
 
   order_api_db:
     image: mysql:latest
@@ -27,8 +25,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_order_api
-    networks:
-      - geekshopping
 
   identity_server_db:
     image: mysql:latest
@@ -41,8 +37,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_identity_server
-    networks:
-      - geekshopping
 
   email_db:
     image: mysql:latest
@@ -55,8 +49,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_email
-    networks:
-      - geekshopping
 
   coupon_api_db:
     image: mysql:latest
@@ -69,8 +61,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_coupon_api
-    networks:
-      - geekshopping
 
   cart_api_db:
     image: mysql:latest
@@ -83,8 +73,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=mypassword
       - MYSQL_DATABASE=geek_shopping_cart_api
-    networks:
-      - geekshopping
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -95,8 +83,6 @@ services:
       - 5672:5672
     volumes:
       - rabbitmq:/var/lib/rabbitmq/mnesia/
-    networks:
-      - geekshopping
 
   identity_server:
     image: geekshopping/identity_server
@@ -112,8 +98,6 @@ services:
       - identity_server_db
     ports:
       - 4436:4436
-    networks:
-      - geekshopping
 
   product_api:
     image: geekshopping/product_api
@@ -130,8 +114,6 @@ services:
       - product_api_db
     ports:
       - 4441:4441
-    networks:
-      - geekshopping
 
   payment_api:
     image: geekshopping/payment_api
@@ -150,8 +132,6 @@ services:
       - 5136:5136
     depends_on:
       - rabbitmq
-    networks:
-      - geekshopping
 
   order_api:
     image: geekshopping/order_api
@@ -172,8 +152,6 @@ services:
       - rabbitmq
     ports:
       - 4456:4456
-    networks:
-      - geekshopping
 
   email_api:
     image: geekshopping/email_api
@@ -194,8 +172,6 @@ services:
       - rabbitmq
     ports:
       - 4461:4461
-    networks:
-      - geekshopping
 
   coupon_api:
     image: geekshopping/coupon_api
@@ -212,8 +188,6 @@ services:
       - coupon_api_db
     ports:
       - 4451:4451
-    networks:
-      - geekshopping
 
   cart_api:
     image: geekshopping/cart_api
@@ -231,8 +205,6 @@ services:
       - cart_api_db
     ports:
       - 4446:4446
-    networks:
-      - geekshopping
 
   gateway_api:
     image: geekshopping/gateway_api
@@ -245,8 +217,6 @@ services:
       - AuthSettings:IdentityUrl=identity_server
     ports:
       - 4481:4481
-    networks:
-      - geekshopping
 
   web:
     image: geekshopping/web
@@ -263,8 +233,6 @@ services:
       - ServiceUrls:CouponAPI=coupon_api
     ports:
       - 4431:4431
-    networks:
-      - geekshopping
 
 volumes:
   product_api_db:
@@ -274,6 +242,4 @@ volumes:
   coupon_api_db:
   cart_api_db:
   rabbitmq:
-
-networks:
-  geekshopping:
+  
