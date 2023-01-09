@@ -92,7 +92,7 @@ services:
       dockerfile: ./GeekShopping.IdetityServer/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=identity_server_db;Port=3308;Database=geek_shopping_identity_server;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=identity_server_db;Database=geek_shopping_identity_server;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4436
     depends_on:
       - identity_server_db
@@ -107,7 +107,7 @@ services:
       dockerfile: ./GeekShopping.ProductAPI/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=product_api_db;Port=3306;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=product_api_db;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4441
       - AuthSettings:IdentityUrl=identity_server
     depends_on:
@@ -141,7 +141,7 @@ services:
       dockerfile: ./GeekShopping.OrderAPI/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=order_api_db;Port=3307;DataBase=geek_shopping_order_api;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=order_api_db;DataBase=geek_shopping_order_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4456
       - AuthSettings:IdentityUrl=identity_server
       - RabbitMqSettings:HostName=rabbitmq
@@ -161,7 +161,7 @@ services:
       dockerfile: ./GeekShopping.Email/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=email_db;Port=3305;DataBase=geek_shopping_email;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=email_db;DataBase=geek_shopping_email;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4461
       - AuthSettings:IdentityUrl=identity_server
       - RabbitMqSettings:HostName=rabbitmq
@@ -181,7 +181,7 @@ services:
       dockerfile: ./GeekShopping.CouponAPI/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=coupon_api_db;Port=3310;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=coupon_api_db;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4451
       - AuthSettings:IdentityUrl=identity_server
     depends_on:
@@ -197,7 +197,7 @@ services:
       dockerfile: ./GeekShopping.CartAPI/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MySQLConnection:MySQLConnectionString=Server=cart_api_db;Port=3311;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
+      - MySQLConnection:MySQLConnectionString=Server=cart_api_db;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4446
       - AuthSettings:IdentityUrl=identity_server
       - ServiceUrls:CouponAPI=coupon_api
