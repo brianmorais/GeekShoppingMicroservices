@@ -109,7 +109,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - MySQLConnection:MySQLConnectionString=Server=product_api_db;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4441
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
     depends_on:
       - product_api_db
     ports:
@@ -124,7 +124,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://*:5136
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
       - RabbitMqSettings:HostName=rabbitmq
       - RabbitMqSettings:UserName=guest
       - RabbitMqSettings:Password=guest
@@ -143,7 +143,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - MySQLConnection:MySQLConnectionString=Server=order_api_db;DataBase=geek_shopping_order_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4456
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
       - RabbitMqSettings:HostName=rabbitmq
       - RabbitMqSettings:UserName=guest
       - RabbitMqSettings:Password=guest
@@ -163,7 +163,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - MySQLConnection:MySQLConnectionString=Server=email_db;DataBase=geek_shopping_email;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4461
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
       - RabbitMqSettings:HostName=rabbitmq
       - RabbitMqSettings:UserName=guest
       - RabbitMqSettings:Password=guest
@@ -183,7 +183,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - MySQLConnection:MySQLConnectionString=Server=coupon_api_db;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4451
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
     depends_on:
       - coupon_api_db
     ports:
@@ -199,8 +199,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - MySQLConnection:MySQLConnectionString=Server=cart_api_db;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
       - ASPNETCORE_URLS=http://*:4446
-      - AuthSettings:IdentityUrl=identity_server
-      - ServiceUrls:CouponAPI=coupon_api
+      - AuthSettings:IdentityUrl=http://identity_server
+      - ServiceUrls:CouponAPI=http://coupon_api
     depends_on:
       - cart_api_db
     ports:
@@ -214,7 +214,7 @@ services:
       dockerfile: ./GeekShopping.APIGateway/Dockerfile
     environment:
       - ASPNETCORE_URLS=http://*:4481
-      - AuthSettings:IdentityUrl=identity_server
+      - AuthSettings:IdentityUrl=http://identity_server
     ports:
       - 4481:4481
 
@@ -227,10 +227,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://*:4431
-      - ServiceUrls:IdentityServer=identity_server
-      - ServiceUrls:ProductAPI=product_api
-      - ServiceUrls:CartAPI=cart_api
-      - ServiceUrls:CouponAPI=coupon_api
+      - ServiceUrls:IdentityServer=http://identity_server
+      - ServiceUrls:ProductAPI=http://product_api
+      - ServiceUrls:CartAPI=http://cart_api
+      - ServiceUrls:CouponAPI=http://coupon_api
     ports:
       - 4431:4431
 
