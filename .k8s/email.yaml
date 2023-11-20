@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: geekshopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: email-db-svc
+spec:
+  selector:
+    app: email-db
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: email-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-db
+  template:
+    metadata:
+      labels:
+        app: email-db
+    spec:
+      containers:
+      - name: email-db
+        image: mysql:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: mypassword
+          - name: MYSQL_DATABASE
+            value: geek_shopping_email
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: email-api-svc
+spec:
+  selector:
+    app: email-api
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: email-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-api
+  template:
+    metadata:
+      labels:
+        app: email-api
+    spec:
+      containers:
+      - name: email-api
+        image: email-api:minikube
+        env:
+          - name: MySQLConnection:MySQLConnectionString
+            value: Server=email-db-svc;DataBase=geek_shopping_email;Uid=root;Pwd=mypassword
+          - name: AuthSettings:IdentityUrl
+            value: http://identity-server-svc
+          - name: RabbitMqSettings:HostName
+            value: rabbitmq-svc
+          - name: RabbitMqSettings:UserName
+            value: guest
+          - name: RabbitMqSettings:Password
+            value: guest
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 80
+

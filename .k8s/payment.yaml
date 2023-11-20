@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: geekshopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: payment-api-svc
+spec:
+  selector:
+    app: payment-api
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: payment-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-api
+  template:
+    metadata:
+      labels:
+        app: payment-api
+    spec:
+      containers:
+      - name: payment-api
+        image: payment-api:minikube
+        env:
+          - name: AuthSettings:IdentityUrl
+            value: http://identity-server-svc
+          - name: RabbitMqSettings:HostName
+            value: rabbitmq-svc
+          - name: RabbitMqSettings:UserName
+            value: guest
+          - name: RabbitMqSettings:Password
+            value: guest
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 80

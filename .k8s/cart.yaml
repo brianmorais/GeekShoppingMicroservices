@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: geekshopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: cart-db-svc
+spec:
+  selector:
+    app: cart-db
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: cart-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-db
+  template:
+    metadata:
+      labels:
+        app: cart-db
+    spec:
+      containers:
+      - name: cart-db
+        image: mysql:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: mypassword
+          - name: MYSQL_DATABASE
+            value: geek_shopping_cart_api
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: cart-api-svc
+spec:
+  selector:
+    app: cart-api
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: cart-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-api
+  template:
+    metadata:
+      labels:
+        app: cart-api
+    spec:
+      containers:
+      - name: cart-api
+        image: cart-api:minikube
+        env:
+          - name: MySQLConnection:MySQLConnectionString
+            value: Server=cart-db-svc;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
+          - name: AuthSettings:IdentityUrl
+            value: http://identity-server-svc
+          - name: ServiceUrls:CouponAPI
+            value: http://coupon-api-svc
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 80

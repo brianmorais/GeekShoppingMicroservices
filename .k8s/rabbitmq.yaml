@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: geekshopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: rabbitmq-svc
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+  - port: 5672
+    targetPort: 5672
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: rabbitmq-management-svc
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+  - port: 15672
+    targetPort: 15672
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: rabbitmq
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:management-alpine
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672

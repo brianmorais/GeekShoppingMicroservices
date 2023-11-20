@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: geekshopping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: geekshopping
+  name: web-site-svc
+spec:
+  selector:
+    app: web-site
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: geekshopping
+  name: web-site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-site
+  template:
+    metadata:
+      labels:
+        app: web-site
+    spec:
+      containers:
+      - name: web-site
+        image: web-site:minikube
+        env:
+          - name: ServiceUrls:IdentityServer
+            value: http://identity-server-svc
+          - name: ServiceUrls:ProductAPI
+            value: http://api-gateway-svc
+          - name: ServiceUrls:CartAPI
+            value: http://api-gateway-svc
+          - name: ServiceUrls:CouponAPI
+            value: http://api-gateway-svc
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        ports:
+        - containerPort: 80
+
