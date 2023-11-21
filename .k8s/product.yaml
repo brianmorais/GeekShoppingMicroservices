@@ -76,12 +76,12 @@ spec:
     spec:
       containers:
       - name: product-api
-        image: product-api:minikube
+        image: localhost:5000/product-api:minikube
         env:
-          - name: MySQLConnection:MySQLConnectionString
-            value: Server=product-db-svc;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword
-          - name: AuthSettings:IdentityUrl
-            value: http://identity-server-svc
+          - name: MySQLConnection__MySQLConnectionString
+            value: "Server=product-db-svc;DataBase=geek_shopping_product_api;Uid=root;Pwd=mypassword"
+          - name: AuthSettings__IdentityUrl
+            value: "http://identity-server-svc"
         resources:
           limits:
             memory: 100Mi

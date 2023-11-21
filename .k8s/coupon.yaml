@@ -75,12 +75,12 @@ spec:
     spec:
       containers:
       - name: coupon-api
-        image: coupon-api:minikube
+        image: localhost:5000/coupon-api:minikube
         env:
-          - name: AuthSettings:IdentityUrl
-            value: http://identity-server-svc
-          - name: MySQLConnection:MySQLConnectionString
-            value: Server=coupon-db-svc;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword
+          - name: AuthSettings__IdentityUrl
+            value: "http://identity-server-svc"
+          - name: MySQLConnection__MySQLConnectionString
+            value: "Server=coupon-db-svc;DataBase=geek_shopping_coupon_api;Uid=root;Pwd=mypassword"
         resources:
           limits:
             memory: 100Mi

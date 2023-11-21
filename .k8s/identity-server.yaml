@@ -76,10 +76,10 @@ spec:
     spec:
       containers:
       - name: identity-server
-        image: geekshopping-identityserver:minikube
+        image: localhost:5000/geekshopping-identityserver:minikube
         env:
-          - name: MySQLConnection:MySQLConnectionString
-            value: Server=identity-server-db-svc;Database=geek_shopping_identity_server;Uid=root;Pwd=mypassword
+          - name: MySQLConnection__MySQLConnectionString
+            value: "Server=identity-server-db-svc;Database=geek_shopping_identity_server;Uid=root;Pwd=mypassword"
         resources:
           limits:
             memory: 100Mi

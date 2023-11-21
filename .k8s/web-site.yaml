@@ -33,16 +33,16 @@ spec:
     spec:
       containers:
       - name: web-site
-        image: web-site:minikube
+        image: localhost:5000/web-site:minikube
         env:
-          - name: ServiceUrls:IdentityServer
-            value: http://identity-server-svc
-          - name: ServiceUrls:ProductAPI
-            value: http://api-gateway-svc
-          - name: ServiceUrls:CartAPI
-            value: http://api-gateway-svc
-          - name: ServiceUrls:CouponAPI
-            value: http://api-gateway-svc
+          - name: ServiceUrls__IdentityServer
+            value: "http://identity-server-svc"
+          - name: ServiceUrls__ProductAPI
+            value: "http://api-gateway-svc"
+          - name: ServiceUrls__CartAPI
+            value: "http://api-gateway-svc"
+          - name: ServiceUrls__CouponAPI
+            value: "http://api-gateway-svc"
         resources:
           limits:
             memory: 100Mi

@@ -76,14 +76,14 @@ spec:
     spec:
       containers:
       - name: cart-api
-        image: cart-api:minikube
+        image: localhost:5000/cart-api:minikube
         env:
-          - name: MySQLConnection:MySQLConnectionString
-            value: Server=cart-db-svc;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword
-          - name: AuthSettings:IdentityUrl
-            value: http://identity-server-svc
-          - name: ServiceUrls:CouponAPI
-            value: http://coupon-api-svc
+          - name: MySQLConnection__MySQLConnectionString
+            value: "Server=cart-db-svc;DataBase=geek_shopping_cart_api;Uid=root;Pwd=mypassword"
+          - name: AuthSettings__IdentityUrl
+            value: "http://identity-server-svc"
+          - name: ServiceUrls__CouponAPI
+            value: "http://coupon-api-svc"
         resources:
           limits:
             memory: 100Mi

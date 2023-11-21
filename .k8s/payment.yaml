@@ -33,16 +33,16 @@ spec:
     spec:
       containers:
       - name: payment-api
-        image: payment-api:minikube
+        image: localhost:5000/payment-api:minikube
         env:
-          - name: AuthSettings:IdentityUrl
-            value: http://identity-server-svc
-          - name: RabbitMqSettings:HostName
-            value: rabbitmq-svc
-          - name: RabbitMqSettings:UserName
-            value: guest
-          - name: RabbitMqSettings:Password
-            value: guest
+          - name: AuthSettings__IdentityUrl
+            value: "http://identity-server-svc"
+          - name: RabbitMqSettings__HostName
+            value: "rabbitmq-svc"
+          - name: RabbitMqSettings__UserName
+            value: "guest"
+          - name: RabbitMqSettings__Password
+            value: "guest"
         resources:
           limits:
             memory: 100Mi

@@ -33,10 +33,10 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: api-gateway:minikube
+        image: localhost:5000/api-gateway:minikube
         env:
-          - name: AuthSettings:IdentityUrl
-            value: http://identity-server-svc
+          - name: AuthSettings__IdentityUrl
+            value: "http://identity-server-svc"
         resources:
           limits:
             memory: 100Mi
