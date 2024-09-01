@@ -60,7 +60,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 1L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/2_no_internet.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/2_no_internet.jpg?raw=true",
                             Name = "Camiseta No Internet",
                             Price = 69.9m
                         },
@@ -69,7 +69,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 2L,
                             CategoryName = "Action Figure",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/3_vader.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/3_vader.jpg?raw=true",
                             Name = "Capacete Darth Vader Star Wars Black Series",
                             Price = 999.99m
                         },
@@ -78,7 +78,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 3L,
                             CategoryName = "Action Figure",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/4_storm_tropper.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/4_storm_tropper.jpg?raw=true",
                             Name = "Star Wars The Black Series Hasbro - Stormtrooper Imperial",
                             Price = 189.99m
                         },
@@ -87,7 +87,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 4L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/5_100_gamer.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/5_100_gamer.jpg?raw=true",
                             Name = "Camiseta Gamer",
                             Price = 69.99m
                         },
@@ -96,7 +96,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 5L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/6_spacex.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/6_spacex.jpg?raw=true",
                             Name = "Camiseta SpaceX",
                             Price = 49.99m
                         },
@@ -105,7 +105,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 6L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/7_coffee.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/7_coffee.jpg?raw=true",
                             Name = "Camiseta Feminina Coffee Benefits",
                             Price = 69.9m
                         },
@@ -114,7 +114,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 7L,
                             CategoryName = "Sweatshirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/8_moletom_cobra_kay.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/8_moletom_cobra_kay.jpg?raw=true",
                             Name = "Moletom Com Capuz Cobra Kai",
                             Price = 159.9m
                         },
@@ -123,7 +123,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 8L,
                             CategoryName = "Book",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/9_neil.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/9_neil.jpg?raw=true",
                             Name = "Livro Star Talk – Neil DeGrasse Tyson",
                             Price = 49.9m
                         },
@@ -132,7 +132,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 9L,
                             CategoryName = "Action Figure",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/10_milennium_falcon.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/10_milennium_falcon.jpg?raw=true",
                             Name = "Star Wars Mission Fleet Han Solo Nave Milennium Falcon",
                             Price = 359.99m
                         },
@@ -141,7 +141,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 10L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/11_mars.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/11_mars.jpg?raw=true",
                             Name = "Camiseta Elon Musk Spacex Marte Occupy Mars",
                             Price = 59.99m
                         },
@@ -150,7 +150,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 11L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/12_gnu_linux.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/12_gnu_linux.jpg?raw=true",
                             Name = "Camiseta GNU Linux Programador Masculina",
                             Price = 59.99m
                         },
@@ -159,7 +159,7 @@ namespace GeekShopping.ProductAPI.Migrations
                             Id = 12L,
                             CategoryName = "T-shirt",
                             Description = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br/>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
-                            ImageURL = "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg?raw=true",
+                            ImageURL = "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg?raw=true",
                             Name = "Camiseta Goku Fases",
                             Price = 59.99m
                         });

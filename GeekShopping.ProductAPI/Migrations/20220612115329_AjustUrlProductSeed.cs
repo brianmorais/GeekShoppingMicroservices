@@ -13,7 +13,7 @@ namespace GeekShopping.ProductAPI.Migrations
                 keyColumn: "id",
                 keyValue: 12L,
                 column: "image_url",
-                value: "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg?raw=true");
+                value: "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg?raw=true");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -23,7 +23,7 @@ namespace GeekShopping.ProductAPI.Migrations
                 keyColumn: "id",
                 keyValue: 12L,
                 column: "image_url",
-                value: "https://github.com/moraisbrian/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg");
+                value: "https://github.com/brianmorais/GeekShoppingMicroservices/blob/master/ShoppingImages/13_dragon_ball.jpg");
         }
     }
 }

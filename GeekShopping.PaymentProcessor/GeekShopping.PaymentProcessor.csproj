@@ -3,8 +3,8 @@
   <PropertyGroup>
     <PackageId>GeekShopping.PaymentProcessor</PackageId>
     <Version>1.0.0</Version>
-    <Authors>moraisbrian</Authors>
-    <Company>moraisbrian</Company>
+    <Authors>brianmorais</Authors>
+    <Company>brianmorais</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
